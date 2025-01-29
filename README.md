@@ -1,6 +1,4 @@
-# Titanic-Survival-Prediction
-
-# Titanic Survival Prediction Project  
+# Titanic-Survival-Prediction  
 
 ## 📄 **Problem Statement**  
 The objective of this project is to predict whether a passenger survived or not based on features such as class, sex, age, fare, and other passenger details. The dataset used for this project is the famous Titanic dataset from Kaggle.
