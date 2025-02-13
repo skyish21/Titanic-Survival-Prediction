@@ -84,3 +84,22 @@ Open the Jupyter Notebook:
 4. Execution:
 Follow the steps in the notebook to preprocess data, train models, and evaluate their performance.
 
+## 🚀 Running the Flask App
+
+This project includes a Flask web application to allow users to enter passenger details and predict survival.
+
+1. Run the Flask App:
+```bash
+python app.py
+```
+2. Access the Web Interface:
+
+   Open http://127.0.0.1:5000/ in your browser.
+
+## 🎯 Future Enhancements
+
+- Improve model accuracy with hyperparameter tuning.
+
+- Add more user-friendly UI elements.
+
+- Deploy the model on cloud platforms.
