@@ -96,10 +96,28 @@ python app.py
 
    Open http://127.0.0.1:5000/ in your browser.
 
+## 🏃‍♂️ Running the Streamlit App
+1. Start the Streamlit server:
+
+```bash
+streamlit run app.py
+```
+2. Access the web app: Open http://localhost:8501 in your browser.
+
+## Deployment
+To deploy on a cloud platform, you can use Streamlit Cloud or any other cloud platform that supports Streamlit apps.
+
+Push your code to a GitHub repository.
+
+1. Deploy to Streamlit Cloud:
+
+2. Go to Streamlit Cloud.
+- Sign in with your GitHub account and deploy the app.
+- Now, your application is live!
+
+
 ## 🎯 Future Enhancements
 
 - Improve model accuracy with hyperparameter tuning.
 
 - Add more user-friendly UI elements.
-
-- Deploy the model on cloud platforms.
