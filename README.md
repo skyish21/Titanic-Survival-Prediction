@@ -57,9 +57,9 @@ The Titanic dataset contains the following key features:
 
 | **Algorithm**       | **Training Accuracy** | **Test Accuracy** |
 |---------------------|------------------------|------------------|
-| Logistic Regression | 81%                    | 95%              |
+| Logistic Regression | 78%                    | ---              |
 | SMV                 | 65%                    | ---              |
-| Random Forest       | 81%                    | ---              |
+| Random Forest       | 83%                    | 90%              |
 
 ---
 
