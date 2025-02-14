@@ -9,7 +9,7 @@ print("Imports completed")
 app = Flask(__name__)
 
 # Load the trained model using pickle
-with open('Titanic_model.pkl', 'rb') as file:
+with open('titanic_model.pkl', 'rb') as file:
     model = pickle.load(file)
 
 # Title Mapping (Ensure these match the training data encoding)
