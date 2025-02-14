@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titanic Survival Prediction</title>
+    <style>
+        body {
+            background-color: pink;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        input, select, button {
+            width: 100%;
+            margin: 5px 0;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: deeppink;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+            border-radius: 10px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Titanic Survival Prediction</h2>
+        <form id="prediction-form">
+            <input type="number" name="Pclass" placeholder="Passenger Class (1, 2, 3)" required>
+            <select name="Sex" required>
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            <input type="number" name="Age" placeholder="Age" required>
+            <input type="number" name="SibSp" placeholder="Siblings/Spouses Aboard" required>
+            <input type="number" name="Parch" placeholder="Parents/Children Aboard" required>
+            <input type="number" name="Fare" placeholder="Fare" required>
+            <select name="Embarked" required>
+                <option value="">Embarked from</option>
+                <option value="C">Cherbourg (C)</option>
+                <option value="Q">Queenstown (Q)</option>
+                <option value="S">Southampton (S)</option>
+            </select>
+            <input type="text" name="Title" placeholder="Title (Mr, Mrs, Miss, etc.)" required>
+            <input type="text" name="Ticket" placeholder="Ticket Number" required>
+            <input type="text" name="Cabin" placeholder="Cabin Number" required>
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+
+    <!-- Modal for Prediction Result -->
+    <div id="resultModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="prediction-result">Prediction: </p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#prediction-form").submit(function(event) {
+                event.preventDefault();  // Prevent page reload
+    
+                $.ajax({
+                    type: "POST",
+                    url: "/predict",
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        if (response.error) {
+                            $("#prediction-result").text("Error: " + response.error);
+                        } else {
+                            let resultText = response["Survival Prediction"] === 1 ? "Survived" : "Did Not Survive";
+                            $("#prediction-result").text("Prediction: " + resultText);
+                        }
+    
+                        // Show the modal
+                        $("#resultModal").fadeIn();
+                    },
+                    error: function(xhr) {
+                        $("#prediction-result").text("Error: " + xhr.responseJSON.error);
+                        $("#resultModal").fadeIn();
+                    }
+                });
+            });
+    
+            // Close the modal when clicking on the "×" button
+            $(".close").click(function() {
+                $("#resultModal").fadeOut();
+                $("#prediction-form")[0].reset();
+            });
+    
+            // Close modal if user clicks outside of it
+            $(window).click(function(event) {
+                if (event.target.id === "resultModal") {
+                    $("#resultModal").fadeOut();
+                    $("#prediction-form")[0].reset();
+                }
+            });
+        });
+    </script>
+    
+    
+    
+    
+</body>
+</html>
+
+
